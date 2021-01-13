@@ -11,6 +11,7 @@ class App extends Component {
       monsters: [],
       searchField: "",
     };
+    this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
@@ -28,9 +29,7 @@ class App extends Component {
       <div className="App">
         <SearchBox
           placeHolder="search monsters!"
-          handleChange={(e) => {
-            this.setState({ searchField: e.target.value });
-          }}
+          handleChange={this.handleChange}
         />
         <CardList>
           {filteredMonsters.map((monster) => (
@@ -39,6 +38,10 @@ class App extends Component {
         </CardList>
       </div>
     );
+  }
+
+  handleChange(e) {
+    this.setState({ searchField: e.target.value });
   }
 }
 
